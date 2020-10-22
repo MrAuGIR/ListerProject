@@ -6,39 +6,58 @@
     <meta name="description" content="shopping list management website">
     <meta name="keywords" content="list, liste, shopping, courses, management, gestion">
     <meta name="author" content="aurélien Girard">
-    <link rel="icon" type="image/png" href="img/icone/favicon.png" >
+    <link rel="icon" type="image/png" href="img/icon/favicon.png" >
     <link rel="stylesheet" type="text/css" href="styles/indexStyle.css">
     <title>LISTER - Page d'accueil</title>
 </head>
 <body>
     <header>
-        <div class="block_header container">
+        <div class="block-header container">
             <div class="logo-block">
                 <div class="logo-Lister">
-                    <img src="img/icone/logoList_medium.png" alt="logo lister">
+                    <img src="img/icon/logoList_medium.png" alt="logo lister">
                 </div>
                 <div class="name-lister">
-                    <h1>Lister</h1>
+                   <a class="link-without-style" href="index.html" title="vers page d'accueil"><h1>Lister</h1></a> 
                 </div>
             </div>
             <div id="central_header_block" class="central_header">
 
             </div>
-            <div id="nav_block" >
+            <div class="nav-block" >
                 <nav class="nav-header">
                     <ul>
-                        <li>Connexion</li>
-                        <li>Inscription</li>
+                        <li><a class="link-without-style" href="#" title="affichage popup de connexion">Connexion</a></li>
+                        <li><a class="link-without-style" href="#" title="affichage popup d'inscription">Inscription</a></li>
                     </ul>
                 </nav>
             </div>
-        </div>
+        </div><!-- END div block_header -->
     </header> <!--header end-->
-    <main>
+    <div class="main-block">
+        <main class="container">
 
-    </main>
+        </main>
+
+    </div><!--END div main-block -->
     <footer>
-
+        <div class="block-footer container">
+            <nav class="nav-footer">
+                <ul>
+                    <li><a class="link-without-style" href="#" title="vers page contact">Contact</a></li>
+                    <li><a class="link-without-style" href="#" title="vers page confidentialité">confidentialité</a></li>
+                    <li><a class="link-without-style" href="#" title="vers page mention légal">Mention légal</a></li>
+                    <li><a class="link-without-style" href="#" title="vers page aides">Aides</a></li>
+                </ul>
+            </nav>
+            <div class="block-rs">
+                <ul>
+                    <li><a href="http://www.facebook.fr" title="vers page facebook lister" target="_blank"><img src="img/icon/logo_facebook_32x32.png"></a></li>
+                    <li><a href="http://www.twitter.fr" title="vers page twitter lister" target="_blank"><img src="img/icon/logo_twitter_32x32.png"></a></li>
+                    <li><a href="http://www.github.fr" title="vers page github lister" target="_blank"></a></li>
+                </ul>
+            </div>
+        </div><!--END main div block footer-->
     </footer>
 </body>
 </html>

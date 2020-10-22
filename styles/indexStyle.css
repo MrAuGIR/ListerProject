@@ -4,6 +4,12 @@ body{
     flex-direction: column;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+/* STYLE GENERAL */
+/* ALIGNEMENT A GAUCHE DES BLOCS DIV DE LA PAGE */
+.container {
+    width: 85%;
+    margin: 0 auto;
+}
 
 /*****************/
 /* header style */
@@ -17,29 +23,81 @@ header {
     color : white;
     margin: 0 0;
 }
-
-.block_header {
+.block-header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 
 }
-
 /* logo website style */
 .logo-block {
     display: flex;
     flex-direction: row;
 }
+/*
 .name-lister {
     
+}*/
+/* nav block position */
+.nav-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
-
 /*header nav style */
 nav.nav-header ul {
     list-style: none;
     display: flex;
     flex-direction: row;
+    margin : 0 0;
+}
+nav.nav-header ul li{
+    margin : 0px 10px;
+}
+/* <a> style in nav-header and nav-footer*/
+.link-without-style{
+    text-decoration: none;
+    color: ivory;
+}
+/************************/
+/* web page main style */
+/**********************/
+
+.main-block {
+    display: flex;
+    flex-direction: row;
+    background-color: #0D2F81;
+    
 }
 
-nav.nav-header ul li{
-    margin : 10px 10px;
+
+/*************************/
+/* footer style         */
+/***********************/
+footer {
+    display: flex;
+    flex-direction: row;
+    /*background-color: #2D2D2D;*/
+    background-color: #525864;
+    height: 10%;
+    min-height: 100px;
+}
+.block-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*header nav style */
+nav.nav-footer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin : 0 0;
+}
+nav.nav-footer ul li{
+    margin : 0px 50px;
 }
