@@ -1,0 +1,45 @@
+body{
+    margin : 0 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*****************/
+/* header style */
+/***************/
+header {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    min-height: 100px;
+    background-color: #091432 ;
+    color : white;
+    margin: 0 0;
+}
+
+.block_header {
+    display: flex;
+    flex-direction: row;
+
+}
+
+/* logo website style */
+.logo-block {
+    display: flex;
+    flex-direction: row;
+}
+.name-lister {
+    
+}
+
+/*header nav style */
+nav.nav-header ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+nav.nav-header ul li{
+    margin : 10px 10px;
+}
