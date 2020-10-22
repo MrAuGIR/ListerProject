@@ -41,20 +41,36 @@
                 <h3>Organiser vos course</h3>
                 <p>Liste est un outil permettant l'organisation de vos courses et de vos futur achats.</p>
             </section>
-            <section id="list_tools">
-                <div id="left_tools">
-                    <i class="fas fa-angle-left fa-7x"></i>
+            <section id="list_illustration">
+                <div id="left_arrow">
+                    <button onclick="switchElement('clickLeft')" id="clickLeft" title="illustration précédente"><i class="fas fa-angle-left fa-7x"></i></button>
                 </div>
-                <div id="center_tools">
-                    <div id="center_tools_left">
+                <div id="illustration_default" class="center_illustration">
+                    <div class="center_illustration_left">
                         <p>Créer, modifier des listes de courses et sauvegarder les dans votre espace personnel. Partager les ensuite avec vos proches.</p>
                     </div>
-                    <div id="center_tools_right">
+                    <div class="center_illustration_right">
                        <img src="img/illustration/Page_principal_xd.png" alt="illustration page principal">
                     </div>
                 </div>
-                <div id="right_tools">
-                    <i class="fas fa-angle-right fa-7x"></i>
+                <div id="illustration_second" class="center_illustration" >
+                    <div class="center_illustration_left">
+                        <p>Créer, modifier des listes de courses et sauvegarder les dans votre espace personnel. Partager les ensuite avec vos proches.</p>
+                    </div>
+                    <div class="center_illustration_right">
+                       <img src="img/illustration/Page_edition_xd.png" alt="illustration page édition">
+                    </div>
+                </div>
+                <div id="illustration_third" class="center_illustration" >
+                    <div class="center_illustration_left">
+                        <p>Créer, modifier des listes de courses et sauvegarder les dans votre espace personnel. Partager les ensuite avec vos proches.</p>
+                    </div>
+                    <div class="center_illustration_right">
+                       <img src="img/illustration/Page_visualisation_xd.png" alt="illustration page visualisation">
+                    </div>
+                </div>
+                <div id="right_arrow">
+                   <button onclick="switchElement('clickRight')" id="clickRight" title="illustration suivante"><i class="fas fa-angle-right fa-7x"></i></button>
                 </div>
             </section><!--END section list_outil-->
             <div id="bottom_tools">
@@ -81,5 +97,9 @@
             </div>
         </div><!--END main div block footer-->
     </footer>
+    <script src="scripts/switch.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>
