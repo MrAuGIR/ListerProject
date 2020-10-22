@@ -82,12 +82,29 @@ nav.nav-header ul li{
     display: flex;
     flex-direction: row;
 }
-
-
+#right_tools, #left_tools,#center_tools_right, #center_tools_left  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 #center_tools {
     display: flex;
     flex-direction: row;
-    border : 1px solid grey;
+    border : 1px solid ivory;
+}
+
+#center_tools_right, #center_tools_left {
+    padding: 10px;
+}
+
+#center_tools_left{
+    max-width: 350px;
+    max-height: 350px;
+}
+#center_tools_right img{
+    width: 510px;
+    
 }
 
 /******************/
@@ -129,5 +146,10 @@ nav.nav-footer ul li{
     list-style: none;
 }
 .block-rs ul li{
-    margin: 10px 0;
+    margin: 10px 10px;
+}
+
+.horizontal-list{
+    display: flex;
+    flex-direction: row;
 }
