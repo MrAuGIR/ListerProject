@@ -83,7 +83,7 @@ nav.nav-header ul li{
 }
 .central-block {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 #list_illustration {
@@ -112,7 +112,6 @@ nav.nav-header ul li{
     align-items: center;
 }
 
-
 .center_illustration_right, .center_illustration_left {
     display: flex;
     flex-direction: column;
@@ -120,14 +119,23 @@ nav.nav-header ul li{
     align-items: center;
     padding: 10px;
 }
-
 .center_illustration_left{
     max-width: 350px;
     max-height: 350px;
 }
 .center_illustration_right img{
     width: 510px;
+    border: 1px solid lightgrey;
     
+}
+
+/* bloc central right - login and sign-in */
+.central_right {
+    display: flex;
+    color : black;
+    flex-direction: column;
+    background-color: white;
+
 }
 
 /******************/
