@@ -7,8 +7,8 @@ body{
 /* STYLE GENERAL */
 /* ALIGNEMENT A GAUCHE DES BLOCS DIV DE LA PAGE */
 .container {
-    width: 85%;
-    margin: 0 auto;
+    width: 90%;
+    margin: 0 0 0 auto;
 }
 
 button {
@@ -131,11 +131,16 @@ nav.nav-header ul li{
 
 /* bloc central right - login and sign-in */
 .central_right {
-    display: flex;
-    color : black;
+    display: block;
     flex-direction: column;
-    background-color: white;
+    margin-left: 1%;
+}
 
+.form-sign-in{
+    color : rgb(27,39,51);
+    background-color: white;
+    height: 100%;
+    width: 100%;
 }
 
 /******************/
