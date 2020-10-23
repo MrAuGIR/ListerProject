@@ -1,12 +1,19 @@
 //chargment de la page
 var index;
 
-var tabid = ['illustration_default', 'illustration_second', 'illustration_third'];
+var tabid = document.getElementsByClassName("center_illustration");
+
+
+
+//var tabid = ['illustration_default', 'illustration_second', 'illustration_third'];
 
 window.onload = function() {
-    document.getElementById("illustration_default").style.display ="flex";
-    document.getElementById("illustration_second").style.display ="none";
-    document.getElementById("illustration_third").style.display ="none";
+    tabid[0].style.display ="flex";
+    for (i=1; i<tabid.length;i++)
+    {
+        tabid.style.display ="none";
+    }
+   
     index=0;
 }
 
@@ -22,18 +29,16 @@ function switchElement(direction)
     if(idElement == 'clickLeft')
     {
         
-        if(index==0)
-        {
-            index=2;
+        if(index==0){
+            index=tabid.length;
         }
-        else
-        {
+        else{
             index-=1;
         }
     }
     else
     {
-        if(index==2)
+        if(index==tabid.length)
         {
             index=0;
         }
