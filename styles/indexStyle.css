@@ -142,7 +142,7 @@ nav.nav-header ul li{
     display: flex;
     flex-direction: column;
     margin-left: 1%;
-    min-width: 35vh;
+    min-width: 20vw;
 }
 
 .form-sign-in{
