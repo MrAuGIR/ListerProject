@@ -46,7 +46,7 @@ header {
 }*/
 /* nav block position */
 .align-right-block {
-    margin-right: 2%;
+    margin-right: 5vw;
 }
 .nav-block{
     display: flex;
@@ -145,8 +145,12 @@ nav.nav-header ul li{
     min-width: 20vw;
 }
 
-.form-sign-in{
-    display: flex;
+.div-form {
+    display: none;
+}
+
+.form-sign-in, .form-log-in{
+   /* display: flex; */
     flex-direction: column;
     align-items: center;
     color : rgb(27,39,51);
@@ -160,6 +164,13 @@ nav.nav-header ul li{
     font-size: 1.4em;
     margin: 1em 0;
 }
+
+.form-log-in input{
+    font-size: 1.4em;
+    margin: 1em 0;
+}
+
+
 
 /******************/
 /* FOOTER        */
