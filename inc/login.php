@@ -11,10 +11,10 @@
 <h2>Connectez vous</h2>
 <form method="POST" action='<?php echo $actionPath; ?>'>
     <label for="pseudo" hidden>Pseudo ou login</label>
-    <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+    <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required>
     <br>
     <label for="password" hidden>Password</label>
-    <input type="password" name="password" id="password" placeholder="Mot de passe">
+    <input type="password" name="password" id="password" placeholder="Mot de passe" required>
     <br>
     <label for="autoLogin" >Connexion automatique
     <input type="checkbox" name="autoLogin" id="autoLogin"></label>

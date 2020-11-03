@@ -1,5 +1,5 @@
 <h2>Inscrivez-vous</h2>
-<form>
+<form method="POST" action="inc/register_post.php">
     <label for="firstname" hidden>Prénom</label>
     <input type="text" name="firstname" id="firstname" placeholder="Prénom" >
     <br>

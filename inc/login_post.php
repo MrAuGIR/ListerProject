@@ -1,5 +1,10 @@
 <?php
 
+if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS DEJA DEMARRE
+{
+     session_start();
+}
+
 if( !empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['password']) ){
 
     require_once '../admin/bdd.php'; //on se connecte a la base de données
@@ -15,19 +20,22 @@ if( !empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['password']) ){
     // on verifie le password tapé et celui dans la base de donnée
     if(password_verify($_POST['password'], $user['pass'])) 
     {
-        
+        $_SESSION['auth'] = $user; // on crée la session utilisateur
         // si le mot de passe est bon on connecte
         // on verifie le level utilisateur
         if($user['level'] != $adminLevel){
-            header('Location: user/account.php');
+            header('Location: ../user/account.php');
             exit();
         }
         else{
             header('Location: ../admin/controleCenter.php');
             exit();
         }
-        }else{
-            $listErrors['connexion']= 'Mauvais identifiant ou mot de passe';
+
+        
+
+    }else{
+        $listErrors['connexion']= 'Mauvais identifiant ou mot de passe';
     }
 }
 

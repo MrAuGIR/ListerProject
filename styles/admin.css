@@ -1,0 +1,92 @@
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    margin : 0 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* STYLE GENERAL */
+/* ALIGNEMENT A GAUCHE DES BLOCS DIV DE LA PAGE */
+.container {
+    width: 90%;
+    margin: 0 0 0 auto;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    min-height: 100px;
+    background-color: #091432 ;
+    color : white;
+    font-weight: bold;
+    margin: 0 0;
+}
+
+/* logo website style */
+.logo-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.logout{
+    width: 100%;
+    height: 100%;
+    justify-content: end;
+    align-content: flex-end;
+}
+
+/* menu page */
+.nav-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     
+}
+
+/*header nav style */
+nav.nav-header ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding-inline-start: 0px;
+    margin : 0 0;
+}
+nav.nav-header ul li{
+    margin : 0px 10px;
+}
+/* <a> style in nav-header and nav-footer*/
+.link-without-style{
+    text-decoration: none;
+    color: ivory;
+}
+
+/* corps principal */
+.main-block {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    /*min-height: 710px;*/
+    min-height: 80vh;
+    color: rgb(10, 10, 10); 
+}
+
+
+
+/******************/
+/* FOOTER        */
+/****************/
+footer {
+    display: flex;
+    flex-direction: row;
+    background-color: #2D2D2D;
+    /*background-color: #525864;*/
+    height: 10%;
+    min-height: 100px;
+    color : ivory;
+}
