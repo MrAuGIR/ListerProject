@@ -18,7 +18,6 @@ body{
 
 button {
     border-style: none;
-    opacity: 100% ;
 }
 
 /***********/
@@ -64,6 +63,7 @@ nav.nav-header ul {
     list-style: none;
     display: flex;
     flex-direction: row;
+    padding-inline-start: 0px;
     margin : 0 0;
 }
 nav.nav-header ul li{
@@ -74,6 +74,39 @@ nav.nav-header ul li{
     text-decoration: none;
     color: ivory;
 }
+
+/* style des boutons navigation */
+.tabNav {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.tabNav:hover{
+    letter-spacing: 1px;
+    transition: all 0.4s ease 0s;
+    text-shadow: whitesmoke 1px 0 10px;
+}
+
+.tabActiv {
+    background-color: ivory;
+    border: none;
+    color: #0D2F81;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 /*************************/
 /* web page main-block  */
 /***********************/
@@ -85,9 +118,16 @@ nav.nav-header ul li{
     display: flex;
     flex-direction: row;
     background-color: #0D2F81;
-    min-height: 90vh;
+    min-height: 710px;
+    /*min-height: 90vh;*/
     color: white; 
 }
+.main-error-login {
+    width: 70%;
+    background-color: white;
+    justify-content: center;
+}
+
 .central-block {
     display: flex;
     flex-direction: row;
@@ -95,6 +135,7 @@ nav.nav-header ul li{
 }
 .central_left {
     display: flex;
+    width: 66.66%;
     flex-direction: column;
     justify-content: space-around;
 }
@@ -125,6 +166,13 @@ nav.nav-header ul li{
     align-items: center;
 }
 
+/* style bouton fleche gauche et droite */
+.arrow {
+    background-color: transparent;
+    border: none;
+}
+
+
 .center_illustration_right, .center_illustration_left {
     display: flex;
     flex-direction: column;
@@ -145,6 +193,7 @@ nav.nav-header ul li{
 /* bloc central right - login and sign-in */
 .central_right {
     display: flex;
+    width: 33.33%;
     flex-direction: column;
     margin-left: 1%;
     min-width: 20vw;
@@ -175,7 +224,17 @@ nav.nav-header ul li{
     margin: 1em 0;
 }
 
+/* style des messages erreurs */
+.alerte-message {
+    width: 45%;
+    height: 45%;
+    background-color: rgb(185, 59, 59);
+    color : white;
+    border: none;
+    justify-content: center;
+    align-items: center;
 
+}
 
 /******************/
 /* FOOTER        */

@@ -6,17 +6,17 @@
     <meta name="description" content="shopping list management website">
     <meta name="keywords" content="list, liste, shopping, courses, management, gestion">
     <meta name="author" content="aurélien Girard">
-    <link rel="icon" type="image/png" href="img/icon/favicon.png" >
-    <link rel="stylesheet" type="text/css" href="styles/indexStyle.css">
+    <link rel="icon" type="image/png" href="../img/icon/favicon.png" >
+    <link rel="stylesheet" type="text/css" href="../styles/indexStyle.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    <title>LISTER - Page d'accueil</title>
+    <title>Connexion</title>
 </head>
 <body>
     <header>
         <div class="block-header container">
             <div class="logo-block">
                 <div class="logo-Lister">
-                    <a class="link-without-style" href="index.php" title="vers page d'accueil"><img src="img/icon/logoList_medium.png" alt="logo lister"></a>
+                    <a class="link-without-style" href="../index.php" title="vers page d'accueil"><img src="../img/icon/logoList_medium.png" alt="logo lister"></a>
                 </div>
                 <div class="name-lister">
                    <h1>Lister</h1>
