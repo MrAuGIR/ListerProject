@@ -10,10 +10,16 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h1 {
+    font-size: 1.8em;
+    margin-block-start: 0.42em;
+    margin-block-end: 0.32em;
+}
+
 /* STYLE GENERAL */
 /* ALIGNEMENT A GAUCHE DES BLOCS DIV DE LA PAGE */
 .container {
-    width: 90%;
+    width: 100%;
     margin: 0 0 0 auto;
 }
 
@@ -69,13 +75,47 @@ nav.nav-header ul li{
 /* corps principal */
 .main-block {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: white;
     /*min-height: 710px;*/
     min-height: 80vh;
     color: rgb(10, 10, 10); 
 }
 
+.central-block {
+    display: flex;
+    flex-direction: row;
+    
+}
+.nav-table-bdd {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    background-color: #091432 ;
+    color : white;
+    font-weight: bold;
+}
+.nav-table-bdd ul{
+    list-style: none;
+}
+.nav-table-bdd a{
+    text-decoration: none;
+    color: white;
+
+}
+.gestion-users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+/*** GESTION TABLE USERS **/
+
+.table-users table, .table-users td, .table-users tr {
+    border : 1px solid blue;
+    background-color: lightgrey;
+}
 
 
 /******************/
