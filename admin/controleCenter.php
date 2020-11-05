@@ -18,9 +18,8 @@ $reponse = $bdd->query($sql);
 ?>
 
 <?php require 'inc/header.php'; ?>
-        <div class="main-block">
-            <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
-            <main class="central-block container">
+        <div class="container">       
+            <main class="central-block"> 
                 <section class="nav-table-bdd">
                     <nav>
                         <ul>
@@ -32,6 +31,7 @@ $reponse = $bdd->query($sql);
                     </nav>
                 </section>
                 <section class="gestion-users">
+                    <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
                     <h3>Table utilisateurs</h3>
                     <div class="table-users">
                         <table>
@@ -47,7 +47,7 @@ $reponse = $bdd->query($sql);
                             <?php 
                                 while($info=$reponse->fetch())
                                 {
-                                   /* $date = explode('-',$info['register_at']);
+                                /* $date = explode('-',$info['register_at']);
                                     $dateFrancaise = $date[2].'-'.$date[1].'-'.$date[0];*/
                                     echo '<tr>';
                                     echo '<td>'.$info['id'].'</td>';

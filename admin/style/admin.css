@@ -73,18 +73,12 @@ nav.nav-header ul li{
 }
 
 /* corps principal */
-.main-block {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    /*min-height: 710px;*/
-    min-height: 80vh;
-    color: rgb(10, 10, 10); 
-}
 
 .central-block {
     display: flex;
     flex-direction: row;
+    min-height: 80vh;
+    color: rgb(10, 10, 10); 
     
 }
 .nav-table-bdd {
@@ -112,11 +106,26 @@ nav.nav-header ul li{
 
 /*** GESTION TABLE USERS **/
 
-.table-users table, .table-users td, .table-users tr {
-    border : 1px solid blue;
-    background-color: lightgrey;
+
+table {
+    width: 100%;
 }
 
+table thead{
+    background-color:#091432  ;
+    color: ivory;
+}
+
+table, tr, td{
+    border : 1px solid #091432;
+    border-collapse: collapse;
+   /* font-size : 1.5em;*/
+}
+
+tr:hover {
+    background-color: blue;
+    color:white;
+}
 
 /******************/
 /* FOOTER        */

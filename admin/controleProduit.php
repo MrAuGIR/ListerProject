@@ -17,9 +17,8 @@ $reponse = $bdd->query($sql);
 
 ?>
 <?php require 'inc/header.php'; ?>
-        <div class="main-block">
-            <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
-            <main class="central-block container">
+        <div class="container">          
+            <main class="central-block">
                 <section class="nav-table-bdd">
                     <nav>
                         <ul>
@@ -31,6 +30,7 @@ $reponse = $bdd->query($sql);
                     </nav>
                 </section>
                 <section class="gestion-users">
+                    <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
                     <h3>Table Produit</h3>
                     <div class="table-users">
                         <table>

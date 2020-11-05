@@ -10,15 +10,16 @@ $user = $_SESSION['auth'];
 /** Connexion a la base de donnée */
 require_once 'bdd.php';
 
-/* requète selection table users */
+/* requète selection table users 
 
-$sql = 'SELECT * FROM categories';
-$reponse = $bdd->query($sql);
+$sql = 'SELECT * FROM users';
+$reponse = $bdd->query($sql);*/
 
 ?>
+
 <?php require 'inc/header.php'; ?>
-        <div class="container">
-            <main class="central-block">
+        <div class="container">       
+            <main class="central-block"> 
                 <section class="nav-table-bdd">
                     <nav>
                         <ul>
@@ -31,26 +32,20 @@ $reponse = $bdd->query($sql);
                 </section>
                 <section class="gestion-users">
                     <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
-                    <h3>Table catégories</h3>
+                    <h3>Table listes</h3>
                     <div class="table-users">
                         <table>
                             <thead>
                                 <tr>
                                     <th>id</th>
                                     <th>Nom</th>
+                                    <th>Id propriétaire</th>
                                     <th>description</th>
+                                    <th>Nombre items</th>
+                                    <th>Date création</th>
                             </thead>
                             <tbody>
-                            <?php 
-                                while($info=$reponse->fetch())
-                                {
-                                    echo '<tr>';
-                                    echo '<td>'.$info['id'].'</td>';
-                                    echo '<td>'.$info['name'].'</td>';
-                                    echo '<td>'.$info['description'].'</td>';
-                                    echo '</tr>';
-                                }
-                            ?>
+                            
                             </tbody>
                         </table>
                     </div>
@@ -68,3 +63,5 @@ $reponse = $bdd->query($sql);
         <?php require 'inc/footer.php'; ?>
     </body>
 </html>
+
+
