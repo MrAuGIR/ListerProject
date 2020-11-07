@@ -30,10 +30,12 @@ $reponse = $bdd->query($sql);
                         </ul>
                     </nav>
                 </section>
-                <section class="gestion-users">
-                    <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
-                    <h3>Table utilisateurs</h3>
-                    <div class="table-users">
+                <section class="gestion-table-bdd">
+                    <div class="info-user">
+                        <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
+                    </div>
+                    <div class="block-table">
+                        <h3>Table utilisateurs</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -61,15 +63,39 @@ $reponse = $bdd->query($sql);
                             </tbody>
                         </table>
                     </div>
-                    <div class="select-users">
+                    <div class="select-table">
                         <form>
 
                         </form>
                     </div>
-                    <div class="form-users">
-
+                    <div class="form-table">
+                        <form method="get" action="">
+                            <h3> Ajouter utilisateur </h3>
+                            <div class="input-form">
+                                <label for="pseudo">Pseudonime : </label>
+                                <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo de l'utilisateur" required>
+                            </div>
+                            <div class="input-form">
+                                <label for="email">Email : </label>
+                                <input type="text" name="email" id="email" placeholder="Email de l'utilisateur" required>
+                            </div>
+                            <div class="input-form">
+                                <label for="password">Mot de passe : </label>
+                                <input type="password" name="password" id="password" required>
+                            </div>
+                            <div class="input-form">
+                                <label for="password2">Re-saisissez le mot de passe : </label>
+                                <input type="password" name="password2" id="password2" required>
+                            </div>
+                            <div class="input-form">
+                                <input type="submit" name="insertUser" value="ajouter">
+                            </div>     
+                        </form>
                     </div>
                 </section>
+                <aside class="aside-table-bdd">
+
+                </aside>
             </main>
         </div><!--END div main-block -->
         <?php require 'inc/footer.php'; ?>

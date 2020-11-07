@@ -30,10 +30,12 @@ $reponse = $bdd->query($sql);*/
                         </ul>
                     </nav>
                 </section>
-                <section class="gestion-users">
-                    <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
-                    <h3>Table listes</h3>
-                    <div class="table-users">
+                <section class="gestion-table-bdd">
+                    <div class="info-user">
+                        <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
+                    </div>
+                    <div class="block-table">
+                        <h3>Table catégories</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -49,15 +51,37 @@ $reponse = $bdd->query($sql);*/
                             </tbody>
                         </table>
                     </div>
-                    <div class="select-users">
+                    <div class="select-table">
                         <form>
 
                         </form>
                     </div>
-                    <div class="form-users">
-
+                    <div class="form-table">
+                        <form method="get" action="">
+                            <h3> Ajouter une liste </h3>
+                            <div class="input-form">
+                                <label for="name">Nom de la liste : </label>
+                                <input type="text" name="name" id="name" placeholder="nom liste" required>
+                            </div>
+                            <div class="input-form">
+                                <label for="idUser">id propriétaire : </label>
+                                <select name="idUser" id="idUser" required>
+                                    <option value="2">2 (Admin)</option>
+                                </select>
+                            </div>
+                            <div class="input-form">
+                                <label for="description">Courte description : </label>
+                                <input type="text" name="description" id="description" placeholder="description liste" required>
+                            </div>
+                            <div class="input-form">
+                                <input type="submit" name="insertList" value="ajouter">
+                            </div>     
+                        </form>
                     </div>
                 </section>
+                <aside class="aside-table-bdd">
+
+                </aside>
             </main>
         </div><!--END div main-block -->
         <?php require 'inc/footer.php'; ?>

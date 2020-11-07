@@ -29,16 +29,19 @@ $reponse = $bdd->query($sql);
                         </ul>
                     </nav>
                 </section>
-                <section class="gestion-users">
-                    <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
-                    <h3>Table Produit</h3>
-                    <div class="table-users">
+                <section class="gestion-table-bdd">
+                    <div class="info-user">
+                        <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
+                    </div>
+                    <div class="block-table">
+                        <h3>Table produits</h3>
                         <table>
                             <thead>
                                 <tr>
                                     <th>id</th>
                                     <th>Nom</th>
                                     <th>Catégorie</th>
+                                    <th>Supprimer</th>
                             </thead>
                             <tbody>
                             <?php 
@@ -48,21 +51,71 @@ $reponse = $bdd->query($sql);
                                     echo '<td>'.$info['id'].'</td>';
                                     echo '<td>'.$info['name'].'</td>';
                                     echo '<td>'.$info['id_categorie'].'</td>';
+                                    echo '<td><a href=\' postReq/produit_delete.php?id='.$info['id'].' \' ></td>'
                                     echo '</tr>';
                                 }
                             ?>
                             </tbody>
                         </table>
                     </div>
-                    <div class="select-users">
+                    <div class="select-table">
                         <form>
 
                         </form>
                     </div>
-                    <div class="form-users">
+                    <div class="form-table">
+                        <form method="POST" action="postReq/produit_post.php">
+                            <h3> Ajouter un produit</h3>  
+                            <?php 
+                            if(!empty($_GET['alerte']) && $_GET['alerte']=='fail'){ ?>
+                            <div class="form-alert">
+                            <?php
+                                echo '<ul> Problèmes rencontrés...';
+                                $tab = $_SESSION['alerte']['echec'];
+                                foreach ($tab as $error) {
+                                    echo '<li>'.$error.'</li>';
+                                }
+                                echo '</ul>';
+                            echo '</div>';
+                            }
+                            elseif(!empty($_GET['alerte']) && $_GET['alerte']=='ok'){ ?>
+                            <div class="form-success">
+                            <?php
+                                echo $_SESSION['alerte']['success'];
+                                echo '</div>';
+                            }
 
+                            ?>
+                            
+                            <div class="input-form">
+                                <label for="name">Nom du produit : </label>
+                                <input type="text" name="name" id="name" placeholder="nom produit" required>
+                            </div>
+                            <div class="input-form">
+                                <label for="categorie">Choix de la catégorie : </label>
+                                <select name="categorie" id="categorie" required>
+                                    <?php 
+                                        /* requète selection table catégorie */
+
+                                        $sql = 'SELECT * FROM categories';
+                                        $reponse = $bdd->query($sql);
+
+                                        while($categorie=$reponse->fetch())
+                                        {
+                                            echo '<option  value=\' '.$categorie['id'].' \' >'.$categorie['name'].'</option>';
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="input-form">
+                                <input type="submit" name="insertProd" value="ajouter">
+                            </div>     
+                        </form>
                     </div>
                 </section>
+                <aside class="aside-table-bdd">
+
+                </aside>
             </main>
         </div><!--END div main-block -->
         <?php require 'inc/footer.php'; ?>

@@ -29,10 +29,12 @@ $reponse = $bdd->query($sql);
                         </ul>
                     </nav>
                 </section>
-                <section class="gestion-users">
-                    <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
-                    <h3>Table catégories</h3>
-                    <div class="table-users">
+                <section class="gestion-table-bdd">
+                    <div class="info-user">
+                        <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
+                    </div>
+                    <div class="block-table">
+                        <h3>Table catégories</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -54,15 +56,31 @@ $reponse = $bdd->query($sql);
                             </tbody>
                         </table>
                     </div>
-                    <div class="select-users">
+                    <div class="select-table">
                         <form>
 
                         </form>
                     </div>
-                    <div class="form-users">
-
+                    <div class="form-table">
+                        <form method="get" action="">
+                            <h3> Ajouter une catégorie </h3>
+                            <div class="input-form">
+                                <label for="name">Nom de la catégorie : </label>
+                                <input type="text" name="name" id="name" placeholder="nom catégorie" required>
+                            </div>
+                            <div class="input-form">
+                                <label for="description">Description de la catégorie : </label>
+                                <textarea name="description" id="description" placeholder="description de la catégorie"></textarea>
+                            </div>
+                            <div class="input-form">
+                                <input type="submit" name="insertCat" value="ajouter">
+                            </div>     
+                        </form>
                     </div>
                 </section>
+                <aside class="aside-table-bdd">
+
+                </aside>
             </main>
         </div><!--END div main-block -->
         <?php require 'inc/footer.php'; ?>

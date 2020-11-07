@@ -77,6 +77,7 @@ nav.nav-header ul li{
 .central-block {
     display: flex;
     flex-direction: row;
+    width: 100%;
     min-height: 80vh;
     color: rgb(10, 10, 10); 
     
@@ -97,11 +98,22 @@ nav.nav-header ul li{
     color: white;
 
 }
-.gestion-users {
+.gestion-table-bdd {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
+    width: 70%;
+}
+
+.gestion-table-bdd h3{
+    align-self: start;
+    border-bottom: 1px solid #091432;
+}
+
+.aside-table-bdd {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
 }
 
 /*** GESTION TABLE USERS **/
@@ -125,6 +137,112 @@ table, tr, td{
 tr:hover {
     background-color: blue;
     color:white;
+}
+
+.block-table, .select-table, .form-table {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/**-------------------- MISE EN FORME DU FORMULAIRE ----------------**/
+
+form h3{
+    border-bottom: 1px solid #091432;
+}
+
+.form-alert{
+    width: 100%;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius:10px ;
+}
+
+.form-success{
+    width: 100%;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border-radius:10px ;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: row;
+    Justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+.input-form:hover {
+    background-color: moccasin;
+}
+
+.input-form label {
+    min-width: 250px;
+}
+
+.input-form input[type=text] {
+    padding-left:5px;
+    margin: 5px 0;
+    width: 250px;
+    height: 2em;
+    border: 2px solid grey;
+    border-radius: 4px;
+}
+
+
+.input-form input[type=password] {
+    padding-left:5px;
+    margin: 5px 0;
+    width: 250px;
+    height: 2em;
+    border: 2px solid grey;
+    border-radius: 4px;
+}
+
+
+.input-form textarea{
+    width:250px;
+    height: 100px;
+    resize: none;
+    border-radius: 4px;
+}
+
+
+.input-form input[type=submit]{
+    background-color: green;
+    color:white;
+    height: 30px;
+    width: 80px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.input-form input[type=submit]:hover{
+    background-color: lightgreen;
+    height: 26px;
+    width: 76px;
+    box-shadow: lightpink;
+
+}
+
+.input-form select{
+    padding-left:5px;
+    margin: 5px 0;
+    width: 250px;
+    height: 2em;
+    border: 2px solid grey;
+    border-radius: 4px;
+}
+
+.input-form select:hover{
+    background-color: moccasin;
+}
+/* annuler le surlinage du bouton submit */
+div.input-form:last-child{
+    background-color: white;
 }
 
 /******************/
