@@ -51,7 +51,7 @@ $reponse = $bdd->query($sql);
                                     echo '<td>'.$info['id'].'</td>';
                                     echo '<td>'.$info['name'].'</td>';
                                     echo '<td>'.$info['id_categorie'].'</td>';
-                                    echo '<td><a href=\' postReq/produit_delete.php?id='.$info['id'].' \' ></td>'
+                                    echo '<td><a href=\' postReq/produit_delete.php?id='.$info['id'].' \' >Supprimer</a></td>';
                                     echo '</tr>';
                                 }
                             ?>
@@ -64,7 +64,7 @@ $reponse = $bdd->query($sql);
                         </form>
                     </div>
                     <div class="form-table">
-                        <form method="POST" action="postReq/produit_post.php">
+                        <form method="POST" action="postReq/produit_add.php">
                             <h3> Ajouter un produit</h3>  
                             <?php 
                             if(!empty($_GET['alerte']) && $_GET['alerte']=='fail'){ ?>
