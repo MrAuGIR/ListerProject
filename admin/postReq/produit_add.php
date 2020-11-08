@@ -16,6 +16,9 @@ if(isset($_POST['insertProd']) && $_POST['insertProd']=='ajouter'){
     $name = isset($_POST['name'])?$_POST['name']:'';
     $idCategorie = isset($_POST['categorie'])?$_POST['categorie']:'';
 
+    /* mise en forme du nom */
+    $name = ucfirst(strtolower($name));
+
     //si une des variables est vide
     if(empty($name) || empty($idCategorie))
     {
@@ -28,7 +31,6 @@ if(isset($_POST['insertProd']) && $_POST['insertProd']=='ajouter'){
         $reponse = $bdd->prepare($sql);
         $reponse->execute(['name'=>$name]);
         $produit=$reponse->fetch(); 
-        print_r($produit);
         if($produit){
             $errors['existe']='le produit existe déjà';
         }
@@ -38,7 +40,7 @@ if(isset($_POST['insertProd']) && $_POST['insertProd']=='ajouter'){
     {
         $req = $bdd->prepare('INSERT INTO produits( name,id_categorie) VALUE ( :name, :id_categorie)');
         $req->execute(['name'=>$name,'id_categorie'=>$idCategorie]);
-        $_SESSION['alerte']['success']= 'Ajout du produit';
+        $_SESSION['alerte']['success']= 'Ajout du produit suivant - Nom :'.$name.', id catégorie : '.$idCategorie;
         header('Location: ../controleProduit.php?alerte=ok');
         exit();
     }

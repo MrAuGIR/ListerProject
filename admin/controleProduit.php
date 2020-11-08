@@ -41,6 +41,7 @@ $reponse = $bdd->query($sql);
                                     <th>id</th>
                                     <th>Nom</th>
                                     <th>Catégorie</th>
+                                    <th>Modifier</th>
                                     <th>Supprimer</th>
                             </thead>
                             <tbody>
@@ -51,6 +52,7 @@ $reponse = $bdd->query($sql);
                                     echo '<td>'.$info['id'].'</td>';
                                     echo '<td>'.$info['name'].'</td>';
                                     echo '<td>'.$info['id_categorie'].'</td>';
+                                    echo '<td><a href=\' postReq/produit_edite.php?id='.$info['id'].' \' >Editer</a></td>';
                                     echo '<td><a href=\' postReq/produit_delete.php?id='.$info['id'].' \' >Supprimer</a></td>';
                                     echo '</tr>';
                                 }
