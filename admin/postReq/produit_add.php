@@ -36,6 +36,13 @@ if(isset($_POST['insertProd']) && $_POST['insertProd']=='ajouter'){
         }
     }
 
+    /* on verifie le format de name */
+    if ( !preg_match('/^[a-zA-Z]+$/',$name))
+    {
+        $errors['format']= 'Mauvais format de données';
+    }
+
+
     if(empty($errors))
     {
         $req = $bdd->prepare('INSERT INTO produits( name,id_categorie) VALUE ( :name, :id_categorie)');

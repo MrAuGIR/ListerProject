@@ -60,9 +60,15 @@ if(isset($_GET['submit']) && $_GET['submit']==='Modifier'){
     if(empty($name) || empty($idCategorie) || !is_int($idCategorie) || $idproduit==null){
 
         var_dump($name, $idCategorie);
-        $errors['format'] = 'Erreur dans la saisie des nouvelles valeurs';
+        $errors['vide'] = 'Erreur dans la saisie des nouvelles valeurs';
         echo "je suis dans erreur saisie";
         
+    }
+
+    /* on verifie le format de name */
+    if ( !preg_match('/^[a-zA-Z]+$/',$name))
+    {
+        $errors['format']= 'Mauvais format de données';
     }
 
     /* si pas d'erreur on met à jour la donnée */

@@ -12,7 +12,7 @@ require_once 'bdd.php';
 
 /* requète selection table users */
 
-$sql = 'SELECT * FROM produits';
+$sql = 'SELECT * FROM produits ORDER BY id';
 $reponse = $bdd->query($sql);
 
 ?>
