@@ -12,8 +12,10 @@ require_once 'bdd.php';
 
 /* requète selection table users */
 
-$sql = 'SELECT * FROM produits ORDER BY id';
-$reponse = $bdd->query($sql);
+//$sql = 'SELECT * FROM produits ORDER BY id';
+$sql = 'SELECT * FROM produits p INNER JOIN categories c ON p.id_categorie = c.id';
+$reponse = $bdd->prepare($sql);
+$reponse->execute();
 
 ?>
 <?php require 'inc/header.php'; ?>
@@ -51,7 +53,7 @@ $reponse = $bdd->query($sql);
                                     echo '<tr>';
                                     echo '<td>'.$info['id'].'</td>';
                                     echo '<td>'.$info['name'].'</td>';
-                                    echo '<td>'.$info['id_categorie'].'</td>';
+                                    echo '<td>'.$info['categorie_name'].'</td>';
                                     echo '<td><a href=\' postReq/produit_edite.php?id='.$info['id'].' \' >Editer</a></td>';
                                     echo '<td><a href=\' postReq/produit_delete.php?id='.$info['id'].' \' >Supprimer</a></td>';
                                     echo '</tr>';
@@ -100,11 +102,12 @@ $reponse = $bdd->query($sql);
                                         /* requète selection table catégorie */
 
                                         $sql = 'SELECT * FROM categories';
-                                        $reponse = $bdd->query($sql);
+                                        $reponse = $bdd->prepare($sql);
+                                        $reponse->execute();
 
                                         while($categorie=$reponse->fetch())
                                         {
-                                            echo '<option  value=\' '.$categorie['id'].' \' >'.$categorie['name'].'</option>';
+                                            echo '<option  value=\' '.$categorie['id'].' \' >'.$categorie['categorie_name'].'</option>';
                                         }
                                     ?>
                                 </select>

@@ -13,7 +13,8 @@ require_once 'bdd.php';
 /* requète selection table users */
 
 $sql = 'SELECT * FROM categories';
-$reponse = $bdd->query($sql);
+$reponse = $bdd->prepare($sql);
+$reponse->execute();
 
 ?>
 <?php require 'inc/header.php'; ?>
@@ -48,7 +49,7 @@ $reponse = $bdd->query($sql);
                                 {
                                     echo '<tr>';
                                     echo '<td>'.$info['id'].'</td>';
-                                    echo '<td>'.$info['name'].'</td>';
+                                    echo '<td>'.$info['categorie_name'].'</td>';
                                     echo '<td>'.$info['description'].'</td>';
                                     echo '</tr>';
                                 }
