@@ -36,8 +36,9 @@ if(isset($_POST['insertProd']) && $_POST['insertProd']=='ajouter'){
         }
     }
 
-    /* on verifie le format de name */
-    if ( !preg_match('/^[a-zA-Z]+$/',$name))
+    /* on verifie le format de name, alphabetique uniquement*/
+    //$errors['format']= ctype_alpha($name)?'':'Mauvais format de données';
+    if ( !preg_match('/^[a-zA-Z -]+$/',$name))
     {
         $errors['format']= 'Mauvais format de données';
     }

@@ -5,11 +5,12 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
      session_start();
 }
 
+
 if( !empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['password']) ){
 
     require_once '../admin/bdd.php'; //on se connecte a la base de données
     require_once 'function.php'; // on appel le fichier des fonctions pour pouvoir les utiliser
-    require_once '../admin/config.php'; 
+    //require_once '../admin/config.php'; 
 
     $listErrors = array(); //tableau qui va lister les erreurs
 
@@ -23,7 +24,7 @@ if( !empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['password']) ){
         $_SESSION['auth'] = $user; // on crée la session utilisateur
         // si le mot de passe est bon on connecte
         // on verifie le level utilisateur
-        if($user['level'] != $adminLevel){
+        if($user['level'] != ADMIN_LEVEL){
             header('Location: ../user/account.php');
             exit();
         }

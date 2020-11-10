@@ -66,7 +66,7 @@ if(isset($_GET['submit']) && $_GET['submit']==='Modifier'){
     }
 
     /* on verifie le format de name */
-    if ( !preg_match('/^[a-zA-Z]+$/',$name))
+    if ( !preg_match('/^[a-zA-Z -]+$/',$name))
     {
         $errors['format']= 'Mauvais format de données';
     }
