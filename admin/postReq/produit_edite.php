@@ -26,23 +26,23 @@ if(isset($_GET['idproduit']) && isset($_GET['submit']) && $_GET['submit']==='Mod
 }
 
 /* recuperation des données lié a l'id */ 
-$sql = 'SELECT * FROM produits WHERE id = :id';
+$sql = 'SELECT * FROM produits WHERE produit_id = :id';
 $reponse = $bdd->prepare($sql);
 $reponse->execute(['id'=>$id]);
 while($produit=$reponse->fetch())
 {
-    $idproduit = $produit['id'];
-    $name = $produit['name'];
-    $idCategorie =(int) $produit['id_categorie'];
+    $idproduit = $produit['produit_id'];
+    $name = $produit['produit_name'];
+    $idCategorie =(int) $produit['categorie_id'];
 }
 
 /* nom de la catégorie */
-$sql = 'SELECT name FROM categories WHERE id = :id';
+$sql = 'SELECT categorie_name FROM categories WHERE categorie_id = :id';
 $reponse = $bdd->prepare($sql);
 $reponse->execute(['id'=>$idCategorie]);
 
 while($info = $reponse->fetch()){
-    $nameCategorie=$info['name'];
+    $nameCategorie=$info['categorie_name'];
 }
 
 /**  modification du produit **/
@@ -75,9 +75,9 @@ if(isset($_GET['submit']) && $_GET['submit']==='Modifier'){
     if(empty($errors))
     {
         
-        $sql = 'UPDATE produits SET name = :name, id_categorie= :id_categorie WHERE id = :id';
+        $sql = 'UPDATE produits SET produit_name = :name, categorie_id= :categorie_id WHERE produit_id = :id';
         $req = $bdd->prepare($sql);
-        $req->execute(['name'=>$name, 'id_categorie'=>$idCategorie, 'id'=>$idproduit]);
+        $req->execute(['name'=>$name, 'categorie_id'=>$idCategorie, 'id'=>$idproduit]);
         $success="Modification du produit";
     }
 }elseif (isset($_GET['submit']) && $_GET['submit']==='Retour') {
@@ -136,7 +136,7 @@ if(isset($_GET['submit']) && $_GET['submit']==='Modifier'){
 
                                     while($categorie=$reponse->fetch())
                                     {
-                                        echo '<option  value=\' '.$categorie['id'].' \' >'.$categorie['name'].'</option>';
+                                        echo '<option  value=\' '.$categorie['categorie_id'].' \' >'.$categorie['categorie_name'].'</option>';
                                     }
                                 ?>
                             </select>

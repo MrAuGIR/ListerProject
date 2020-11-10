@@ -48,7 +48,7 @@ $reponse->execute();
                                 while($info=$reponse->fetch())
                                 {
                                     echo '<tr>';
-                                    echo '<td>'.$info['id'].'</td>';
+                                    echo '<td>'.$info['categorie_id'].'</td>';
                                     echo '<td>'.$info['categorie_name'].'</td>';
                                     echo '<td>'.$info['description'].'</td>';
                                     echo '</tr>';

@@ -10,12 +10,27 @@ $user = $_SESSION['auth'];
 /** Connexion a la base de donnée */
 require_once 'bdd.php';
 
-/* requète selection table users */
+/* requète selection table produit */
 
-//$sql = 'SELECT * FROM produits ORDER BY id';
-$sql = 'SELECT * FROM produits p INNER JOIN categories c ON p.id_categorie = c.id';
-$reponse = $bdd->prepare($sql);
-$reponse->execute();
+$filtre_mot =( isset($_GET['search']) && !empty($_GET['search']))?$_GET['search']:'';
+$filtre_categorie=( isset($_GET['tri_categorie']) && !empty($_GET['tri_categorie']))?(int)$_GET['tri_categorie']:0;
+
+if(!empty($filtre_mot)){
+    $model= $filtre_mot.'%';
+    $sql = 'SELECT * FROM produits p INNER JOIN categories c ON p.categorie_id = c.categorie_id WHERE produit_name LIKE :model';
+    $reponse = $bdd->prepare($sql);
+    $reponse->execute(['model'=>$model]);
+}
+elseif($filtre_categorie!=0 && empty($filtre_mot)){
+    $sql = 'SELECT * FROM produits p INNER JOIN categories c ON p.categorie_id = c.categorie_id WHERE p.categorie_id=:filtre_categorie';
+    $reponse = $bdd->prepare($sql);
+    $reponse->execute(['filtre_categorie'=>$filtre_categorie]);
+}else{
+    $sql = 'SELECT * FROM produits p INNER JOIN categories c ON p.categorie_id = c.categorie_id ';
+    $reponse = $bdd->prepare($sql);
+    $reponse->execute();
+}
+
 
 ?>
 <?php require 'inc/header.php'; ?>
@@ -51,11 +66,11 @@ $reponse->execute();
                                 while($info=$reponse->fetch())
                                 {
                                     echo '<tr>';
-                                    echo '<td>'.$info['id'].'</td>';
-                                    echo '<td>'.$info['name'].'</td>';
+                                    echo '<td>'.$info['produit_id'].'</td>';
+                                    echo '<td>'.$info['produit_name'].'</td>';
                                     echo '<td>'.$info['categorie_name'].'</td>';
-                                    echo '<td><a href=\' postReq/produit_edite.php?id='.$info['id'].' \' >Editer</a></td>';
-                                    echo '<td><a href=\' postReq/produit_delete.php?id='.$info['id'].' \' >Supprimer</a></td>';
+                                    echo '<td><a href=\' postReq/produit_edite.php?id='.$info['produit_id'].' \' >Editer</a></td>';
+                                    echo '<td><a href=\' postReq/produit_delete.php?id='.$info['produit_id'].' \' >Supprimer</a></td>';
                                     echo '</tr>';
                                 }
                             ?>
@@ -107,7 +122,7 @@ $reponse->execute();
 
                                         while($categorie=$reponse->fetch())
                                         {
-                                            echo '<option  value=\' '.$categorie['id'].' \' >'.$categorie['categorie_name'].'</option>';
+                                            echo '<option  value=\' '.$categorie['categorie_id'].' \' >'.$categorie['categorie_name'].'</option>';
                                         }
                                     ?>
                                 </select>
@@ -119,7 +134,42 @@ $reponse->execute();
                     </div>
                 </section>
                 <aside class="aside-table-bdd">
+                    <div class="info-user">
+                        <h1 style=" visibility: hidden;">Bienvenue</h1>
+                    </div>
+                    <div class="form-table">
+                        <h3>Filter</h3>
+                        <form method="GET" action="controleProduit.php">
+                            <div class="input-form input-aside">
+                                <label for="tri_categorie">Par catégorie</label>
+                                <select name="tri_categorie" id="tri_categorie" >
+                                    <?php 
+                                        /* requète selection table catégorie */
 
+                                        $sql = 'SELECT * FROM categories';
+                                        $reponse = $bdd->prepare($sql);
+                                        $reponse->execute();
+                                        $defaultValue =0;
+                                        echo '<option  value=\' '.$defaultValue.' \' >toutes</option>';
+
+                                        while($categorie=$reponse->fetch())
+                                        {
+                                            echo '<option  value=\' '.$categorie['categorie_id'].' \' >'.$categorie['categorie_name'].'</option>';
+                                        }
+                                    ?>
+                                </select>
+                                <input type="submit" name="submit_tri" value="go">
+                            </div>
+                        </form>
+                        <h3>Rechercher</h3>
+                        <form method="GET" action="controleProduit.php">
+                            <div class="input-form input-aside">
+                                <label for="search">Mot à rechercher</label>
+                                <input type="text" name="search" id="search" placeholder="terme à rechercher">
+                                <input type="submit" name="submit_search" value="go">
+                            </div>
+                        </form>
+                    </div>                                  
                 </aside>
             </main>
         </div><!--END div main-block -->

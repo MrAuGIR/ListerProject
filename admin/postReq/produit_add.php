@@ -16,6 +16,8 @@ if(isset($_POST['insertProd']) && $_POST['insertProd']=='ajouter'){
     $name = isset($_POST['name'])?$_POST['name']:'';
     $idCategorie = isset($_POST['categorie'])?$_POST['categorie']:'';
 
+    var_dump($name, $idCategorie);
+
     /* mise en forme du nom */
     $name = ucfirst(strtolower($name));
 
@@ -27,7 +29,7 @@ if(isset($_POST['insertProd']) && $_POST['insertProd']=='ajouter'){
     else
     {
         // on verifie qu'il nexiste pas deja
-        $sql = 'SELECT * FROM produits WHERE name=:name';
+        $sql = 'SELECT * FROM produits WHERE produit_name=:name';
         $reponse = $bdd->prepare($sql);
         $reponse->execute(['name'=>$name]);
         $produit=$reponse->fetch(); 
@@ -46,8 +48,8 @@ if(isset($_POST['insertProd']) && $_POST['insertProd']=='ajouter'){
 
     if(empty($errors))
     {
-        $req = $bdd->prepare('INSERT INTO produits( name,id_categorie) VALUE ( :name, :id_categorie)');
-        $req->execute(['name'=>$name,'id_categorie'=>$idCategorie]);
+        $req = $bdd->prepare('INSERT INTO produits( produit_name,categorie_id) VALUE ( :name, :id)');
+        $req->execute(['name'=>$name,'id'=>$idCategorie]);
         $_SESSION['alerte']['success']= 'Ajout du produit suivant - Nom :'.$name.', id catégorie : '.$idCategorie;
         header('Location: ../controleProduit.php?alerte=ok');
         exit();

@@ -17,23 +17,23 @@ if(isset($_GET['choix']) && $_GET['choix']=='Confirme'){
 
 
 /* recuperation des données lié a l'id */ 
-$sql = 'SELECT * FROM produits WHERE id = :id';
+$sql = 'SELECT * FROM produits WHERE produit_id = :id';
 $reponse = $bdd->prepare($sql);
 $reponse->execute(['id'=>$id]);
 while($produit=$reponse->fetch())
 {
-    $idproduit = $produit['id'];
-    $name = $produit['name'];
-    $idCategorie = $produit['id_categorie'];
+    $idproduit = $produit['produit_id'];
+    $name = $produit['produit_name'];
+    $idCategorie = $produit['categorie_id'];
 }
 
 /* nom de la catégorie */
-$sql = 'SELECT name FROM categories WHERE id = :id';
+$sql = 'SELECT categorie_name FROM categories WHERE categorie_id = :id';
 $reponse = $bdd->prepare($sql);
 $reponse->execute(['id'=>$idCategorie]);
 
 while($info = $reponse->fetch()){
-    $nameCategorie=$info['name'];
+    $nameCategorie=$info['categorie_name'];
 }
 
 
@@ -44,7 +44,7 @@ if(isset($_GET['choix']) && $_GET['choix']==='Confirme')
     
     /* requete sql */
     $idDelete = isset($_GET['idDelete'])?$_GET['idDelete']:null;
-    $sql = 'DELETE FROM produits WHERE id = :id';
+    $sql = 'DELETE FROM produits WHERE produit_id = :id';
     $req = $bdd->prepare($sql);
     $req->execute(['id'=>$idDelete]);
 
