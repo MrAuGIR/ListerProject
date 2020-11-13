@@ -5,10 +5,14 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
     session_start();
 }
 
+
 $user = $_SESSION['auth'];
 
 /** Connexion a la base de donnée */
-require_once 'bdd.php';
+/*require_once 'bdd.php';*/
+
+/* appel fonctions*/
+require_once 'utility/function.php';
 
 /* requète selection table users */
 
@@ -23,10 +27,7 @@ $reponse = $bdd->query($sql);
                 <section class="nav-table-bdd">
                     <nav>
                         <ul>
-                            <li><a href="controleCenter.php" title="affichage table utilisateur">Table users</a></li>
-                            <li><a href="controleProduit.php" title="affichage table produit">Table produit</a></li>
-                            <li><a href="controleCategorie.php" title="affichage table catégorie">Table catégorie</a></li>
-                            <li><a href="controleListe.php" title="affichage table liste">Table Liste</a></li>
+                            <?= nav_tables('active'); ?>
                         </ul>
                     </nav>
                 </section>
