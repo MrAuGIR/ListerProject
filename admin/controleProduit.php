@@ -77,7 +77,7 @@ elseif($filtre_categorie!=0 && empty($filtre_mot)){
                 </section>
                 <section class="gestion-table-bdd">
                     <div class="info-user">
-                        <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
+                        <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['name'];?></h1>
                     </div>
                     <div class="block-table">
                         <h3>Table produits</h3>

@@ -3,7 +3,7 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
 {
     session_start();
 }
-$user_name= isset($_SESSION['auth']['pseudo'])? $_SESSION['auth']['pseudo']:'';
+$user_name= isset($_SESSION['auth']['name'])? $_SESSION['auth']['name']:'';
 ?>
 <!-- insertion du header -->
 <!DOCTYPE html>
@@ -40,7 +40,8 @@ $user_name= isset($_SESSION['auth']['pseudo'])? $_SESSION['auth']['pseudo']:'';
                                 <li><button class="tabNav" onclick="tabElement('block-register',this,'#FFFFFF','div-form')">Inscription</button></li>
                                 <li><button class="tabNav" onclick="tabElement('block-login',this,'#FFFFFF','div-form')">Connexion</button></li>
                             <?php else : ?>
-                                <li><a class="tabNav" href="user/account.php?name=<?= $user_name ?>"><?= $user_name; ?></a></li>
+                                <li><a class="tabNav" href="user/account.php?name=<?= $user_name ?>" title="compte personnel"><i class="far fa-user-circle"></i><?= $user_name; ?></a></li>
+                                <li><a class="tabNav" href="user/logout.php" title="deconnexion"><i class="fas fa-user-times"> Deconnexion</i></a></li>
                             <?php endif; ?>
                         </ul>
                     </nav>

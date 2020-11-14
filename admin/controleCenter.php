@@ -8,8 +8,6 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
 
 $user = $_SESSION['auth'];
 
-var_dump($_SESSION['auth']);
-
 /** Connexion a la base de donnée */
 /*require_once 'bdd.php';*/
 
@@ -35,7 +33,7 @@ $reponse = $bdd->query($sql);
                 </section>
                 <section class="gestion-table-bdd">
                     <div class="info-user">
-                        <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['pseudo'];?></h1>
+                        <h1>Bienvenue dans le controle center M. <?php echo $_SESSION['auth']['name'];?></h1>
                     </div>
                     <div class="block-table">
                         <h3>Table utilisateurs</h3>
@@ -56,7 +54,8 @@ $reponse = $bdd->query($sql);
                                     $dateFrancaise = $date[2].'-'.$date[1].'-'.$date[0];*/
                                     echo '<tr>';
                                     echo '<td>'.$info['id'].'</td>';
-                                    echo '<td>'.$info['pseudo'].'</td>';
+                                    echo '<td>'.$info['name'].'</td>';
+                                    echo '<td>'.$info['firstname'].'</td>';
                                     echo '<td>'.$info['email'].'</td>';
                                     echo '<td>'.$info['pass'].'</td>';
                                     echo '<td>'.$info['register_at'].'</td>';
