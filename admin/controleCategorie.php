@@ -4,7 +4,11 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
 {
     session_start();
 }
-
+require_once 'utility/config.php';
+/* on verifie que l'utilisateur admin est connecte */
+if(!isset($_SESSION['auth']) || $_SESSION['auth']['level']!=ADMIN_LEVEL){
+    header('location: ../index.php');
+}
 $user = $_SESSION['auth'];
 
 /** Connexion a la base de donnée */
