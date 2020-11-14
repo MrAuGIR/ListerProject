@@ -6,17 +6,17 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
 }
 
 
-if( !empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['password']) ){
+if( !empty($_POST) && !empty($_POST['email']) && !empty($_POST['password']) ){
 
-    require_once '../admin/bdd.php'; //on se connecte a la base de données
+    require_once '../admin/utility/bdd.php'; //on se connecte a la base de données
     require_once 'function.php'; // on appel le fichier des fonctions pour pouvoir les utiliser
     //require_once '../admin/config.php'; 
 
     $listErrors = array(); //tableau qui va lister les erreurs
 
-    $sql = 'SELECT * FROM users WHERE (pseudo  = :username or email = :username)';
+    $sql = 'SELECT * FROM users WHERE (email = :email)';
     $req = $bdd->prepare($sql); // requète préparé
-    $req->execute(['username'=>$_POST['pseudo']]);
+    $req->execute(['email'=>$_POST['email']]);
     $user = $req->fetch(); // on recupère le premier utilisateur trouvé
     // on verifie le password tapé et celui dans la base de donnée
     if(password_verify($_POST['password'], $user['pass'])) 
@@ -57,11 +57,20 @@ if( !empty($_POST) && !empty($_POST['pseudo']) && !empty($_POST['password']) ){
                     <?php endif; ?>
                 </div> <!--END div class 'central_left'-->
                 <div class="central_right ">
-                    <div id="block-register" class="form-sign-in div-form">
-                        <?php require 'register.php'; ?> 
-                    </div>
-                    <div id="block-login" class="form-log-in div-form">
-                        <?php require 'login.php'; ?>
+                    <div  class="form-log-in ">
+                        <h2>Connectez vous</h2>
+                        <form method="POST" action="">
+                            <label for="email" hidden>Email</label>
+                            <input type="text" name="email" id="email" placeholder="Votre email" required>
+                            <br>
+                            <label for="password" hidden>Password</label>
+                            <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                            <br>
+                            <label for="autoLogin" >Connexion automatique
+                            <input type="checkbox" name="autoLogin" id="autoLogin"></label>
+                            <br>
+                            <input type="submit" value="Validation">
+                        </form>
                     </div>
                 </div> <!--END div class 'central_right'-->
             </main>

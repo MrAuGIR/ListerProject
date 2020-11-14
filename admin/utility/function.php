@@ -33,7 +33,7 @@ function nav_tables(string $class):string{
  *  Compte le nombre de ligne d'une table
  */
 
-function nb_row_table(string $tableName, $bdd):int{
+function nb_row_table(string $tableName,object $bdd):int{
 
     $requete = 'SELECT COUNT(*) as numb_row FROM :name';
     $reponse= $bdd->prepare($requete);

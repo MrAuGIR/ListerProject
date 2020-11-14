@@ -1,3 +1,10 @@
+<?php
+if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS DEJA DEMARRE
+{
+    session_start();
+}
+$user_name= isset($_SESSION['auth']['pseudo'])? $_SESSION['auth']['pseudo']:'';
+?>
 <!-- insertion du header -->
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,8 +36,12 @@
                         <ul><!--
                             <li><a class="link-without-style" href="inc/register.php" title="affichage popup de connexion">Connexion</a></li>
                             <li><a class="link-without-style" href="inc/login.php" title="affichage popup d'inscription">Inscription</a></li>-->
-                            <li><button class="tabNav" onclick="tabElement('block-register',this,'#FFFFFF','div-form')">Inscription</button></li>
-                            <li><button class="tabNav" onclick="tabElement('block-login',this,'#FFFFFF','div-form')">Connexion</button></li>
+                            <?php if($user_name ===''): ?>
+                                <li><button class="tabNav" onclick="tabElement('block-register',this,'#FFFFFF','div-form')">Inscription</button></li>
+                                <li><button class="tabNav" onclick="tabElement('block-login',this,'#FFFFFF','div-form')">Connexion</button></li>
+                            <?php else : ?>
+                                <li><a class="tabNav" href="user/account.php?name=<?= $user_name ?>"><?= $user_name; ?></a></li>
+                            <?php endif; ?>
                         </ul>
                     </nav>
                 </div><!--END div nav-block-->

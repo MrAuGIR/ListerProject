@@ -6,12 +6,12 @@
     else{
         $actionPath = 'login_post.php';
     }
-
+    
 ?>
 <h2>Connectez vous</h2>
 <form method="POST" action='<?php echo $actionPath; ?>'>
-    <label for="pseudo" hidden>Pseudo ou login</label>
-    <input type="text" name="pseudo" id="pseudo" placeholder="Pseudo" required>
+    <label for="email" hidden>Email</label>
+    <input type="text" name="email" id="email" placeholder="Votre email" required>
     <br>
     <label for="password" hidden>Password</label>
     <input type="password" name="password" id="password" placeholder="Mot de passe" required>

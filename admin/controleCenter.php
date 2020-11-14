@@ -8,6 +8,8 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
 
 $user = $_SESSION['auth'];
 
+var_dump($_SESSION['auth']);
+
 /** Connexion a la base de donnée */
 /*require_once 'bdd.php';*/
 
