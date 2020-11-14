@@ -41,7 +41,8 @@ $user_name= isset($_SESSION['auth']['pseudo'])? $_SESSION['auth']['pseudo']:'';
                             <li><a href="register_post.php" title="inscription">Inscription</a></li>
                             <li><a href="login_post.php" title="connexion">Connexion</a></li>
                         <?php else : ?>
-                            <li><button class="tabNav" href="user/account.php?name=<?= $user_name ?>"><?= $user_name ?></button></li>
+                            <li><a class="tabNav" href="user/account.php?name=<?= $user_name ?>" title="compte personnel"><i class="far fa-user-circle"></i><?= $user_name; ?></a></li>
+                            <li><a class="tabNav" href="user/logout.php" title="deconnexion"><i class="fas fa-user-times"> Deconnexion</i></a></li>
                         <?php endif; ?>
                     </ul>
                 </nav>
