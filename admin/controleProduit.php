@@ -164,27 +164,22 @@ elseif($filtre_categorie!=0 && empty($filtre_mot)){
                     <div class="form-table">
                         <form method="POST" action="postReq/produit_add.php">
                             <h3> Ajouter un produit</h3>  
-                            <?php 
-                            if(!empty($_GET['alerte']) && $_GET['alerte']=='fail'){ ?>
+                            <?php if(!empty($_GET['alerte']) && $_GET['alerte']=='fail'): ?>
                             <div class="form-alert">
-                            <?php
-                                echo '<ul> Problèmes rencontrés...';
-                                $tab = $_SESSION['alerte']['echec'];
-                                foreach ($tab as $error) {
-                                    echo '<li>'.$error.'</li>';
-                                }
-                                echo '</ul>';
-                            echo '</div>';
-                            }
-                            elseif(!empty($_GET['alerte']) && $_GET['alerte']=='ok'){ ?>
+                                <ul> Problèmes rencontrés...;
+                                <?php $tab = $_SESSION['alerte']['echec']; ?>
+                                <?php foreach ($tab as $error) : ?>
+                                    <li><?= $error ?></li>
+                                <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <?php elseif(!empty($_GET['alerte']) && $_GET['alerte']=='ok') : ?>
                             <div class="form-success">
-                            <?php
-                                echo $_SESSION['alerte']['success'];
-                                echo '</div>';
-                            }
-
-                            ?>
-                            
+                                <ul>
+                                    <li><?= $_SESSION['alerte']['success']; ?></li>
+                                </ul>
+                            </div>
+                            <?php endif; ?>
                             <div class="input-form">
                                 <label for="name">Nom du produit : </label>
                                 <input type="text" name="name" id="name" placeholder="nom produit" required>

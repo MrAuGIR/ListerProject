@@ -160,6 +160,7 @@ nav.nav-header ul li{
 
 table {
     width: 100%;
+    font-size: small;
 }
 
 table thead{
@@ -185,7 +186,7 @@ td a:hover{
 }
 
 .block-table, .select-table, .form-table{
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
 }
 

@@ -45,7 +45,8 @@ $reponse = $bdd->query($sql);
                             <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th>Pseudo</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
                                     <th>Email</th>
                                     <th>Mot de passe</th>
                                     <th>Date création</th>
@@ -68,11 +69,6 @@ $reponse = $bdd->query($sql);
                             ?>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="select-table">
-                        <form>
-
-                        </form>
                     </div>
                     <div class="form-table">
                         <form method="get" action="">

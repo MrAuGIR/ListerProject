@@ -6,7 +6,7 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
 
 
 /** Connexion a la base de donnée */
-require_once '../bdd.php';
+require_once '../utility/bdd.php';
 /* tableau contenant les messages d'erreurs */
 $errors=array();
 
