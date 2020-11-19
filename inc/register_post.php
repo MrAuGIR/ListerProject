@@ -149,7 +149,7 @@ if(!empty($_POST)){ //formulaire soumit
                                 <?php endif; ?>
                                 <br>
                                 <label for="password" hidden>Password</label>
-                                <input type="text" name="password" id="password" placeholder="Mot de passe">
+                                <input type="password" name="password" id="password" placeholder="Mot de passe">
                                 <?php if(array_key_exists('password',$errors)): ?>
                                     <span><?= $errors['password'] ?></span>
                                 <?php endif; ?>
