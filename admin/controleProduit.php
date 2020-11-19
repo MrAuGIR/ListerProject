@@ -8,9 +8,11 @@ require_once 'utility/config.php';
 /* on verifie que l'utilisateur admin est connecte */
 if(!isset($_SESSION['auth']) || $_SESSION['auth']['level']!=ADMIN_LEVEL){
     header('location: ../index.php');
+    exit();
 }
 
 $user = $_SESSION['auth'];
+$user_name = $_SESSION['auth']['name'];
 $debut=0;
 /** Connexion a la base de donnée */
 /*require_once 'utility/bdd.php';*/

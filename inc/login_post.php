@@ -5,6 +5,8 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
      session_start();
 }
 
+$user = isset($_SESSION['auth'])? $_SESSION['auth']:null;
+$user_name = isset($_SESSION['auth']['name'])? $_SESSION['auth']['name']:'';
 
 if( !empty($_POST) && !empty($_POST['email']) && !empty($_POST['password']) ){
 

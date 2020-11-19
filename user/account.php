@@ -4,6 +4,10 @@ if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS D
     session_start();
 }
 
+if(!isset($_SESSION['auth'])){
+    header('location: ../index.php');
+}
+
 $user = $_SESSION['auth'];
 ?>
 

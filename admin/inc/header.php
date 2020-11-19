@@ -6,7 +6,7 @@
         <link rel="icon" type="image/ico" href="../img/icon/control-Panel.ico" >
         <link rel="stylesheet" type="text/css" href="../admin/style/admin.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-        <title>Centre de commandement</title>
+        <title>Centre de Gestion</title>
     </head>
     <body>
         <header>
@@ -18,18 +18,12 @@
                     <div class="name-lister">
                         <h1>Lister</h1>
                     </div>
-                    <div class="logout">
-                        <a href="logout.php" title="deconnexion">Déconnexion</a>
-                    </div>
                 </div>
                 <div class="nav-block" >
                     <nav class="nav-header">
-                        <ul><!--
-                            <li><a class="link-without-style" href="inc/register.php" title="affichage popup de connexion">Connexion</a></li>
-                            <li><a class="link-without-style" href="inc/login.php" title="affichage popup d'inscription">Inscription</a></li>-->
-                            <li><button class="tabNav" onclick="tabElement('block-register',this,'#FFFFFF','div-form')">Gestion BDD</button></li>
-                            <li><button class="tabNav" onclick="tabElement('block-login',this,'#FFFFFF','div-form')">Gestion page</button></li>
-                            <li><button class="tabNav" onclick="tabElement('block-login',this,'#FFFFFF','div-form')">Statistiques</button></li>
+                        <ul>
+                            <li><a class="link-without-style" href="#" title="compte personnel"><i class="far fa-user-circle"></i><?= $user_name; ?></a></li>
+                            <li><a class="link-without-style" href="logout.php" title="deconnexion"><i class="fas fa-user-times"> Deconnexion</i></a></li>
                         </ul>
                     </nav>
                 </div><!--END div nav-block-->

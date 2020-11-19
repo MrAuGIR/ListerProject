@@ -26,7 +26,8 @@
                 <div class="nav-block align-right-block" >
                     <nav class="nav-header">
                         <ul>
-                            <li><button class="tabNav" onclick="tabElement('block-login',this,'#FFFFFF','div-form')"><i class="far fa-user-circle"></i>Compte <?php echo $_SESSION['auth']['name']; ?></button></li>
+                            <li><a class="link-without-style"><i class="far fa-user-circle"></i>Compte <?php echo $_SESSION['auth']['name']; ?></a></li>
+                            <li><a class="link-without-style" href="../user/logout.php" title="deconnexion"><i class="fas fa-user-times"> Deconnexion</i></a></li>
                         </ul>
                     </nav>
                 </div><!--END div nav-block-->

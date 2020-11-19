@@ -1,10 +1,13 @@
 <?php
-
+/*
 if(session_status() == PHP_SESSION_NONE) //ON VERIFIE QUE LA SESSION N'EST PAS DEJA DEMARRE
 {
     session_start();
 }
+*/
 
+$user = isset($_SESSION['auth'])? $_SESSION['auth']:null;
+$user_name = isset($_SESSION['auth']['name'])? $_SESSION['auth']['name']:'';
 
 //tableau listant les erreurs
 $errors=array();
@@ -31,7 +34,7 @@ if(!empty($_POST)){ //formulaire soumit
         }
 
         // on verifie le nom
-        if(!isset($_POST['name']) || empty($_POST['name']) || strlen($_POST['name'])<1 || preg_match("/^[a-zA-Z -]+$/",$_POST['name'])){
+        if(!isset($_POST['name']) || empty($_POST['name']) || strlen($_POST['name'])<1 ){
             $errors['name']= "Veuillez renseigner un nom valide";
         }else{
             $name = $_POST['name'];
@@ -44,8 +47,7 @@ if(!empty($_POST)){ //formulaire soumit
         }elseif(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)){
             $errors['email']= "Format email invalide";
         }else{
-            $email = filter_var($_POST['email'],FILTER_VALIDATE_EMAIL);
-            $email = verify_input_form($email,'email');
+            $email = verify_input_form($_POST['email'],'email');
             // on verifie que l'email n'est pas deja utilise
             $sql = "SELECT email FROM users WHERE email = :email";
             $reponse = $bdd->prepare($sql);
@@ -89,7 +91,7 @@ if(!empty($_POST)){ //formulaire soumit
             session_start(); //je demarre la session une fois que l'utilisateur est validé
             $_SESSION['auth'] = $user;
 
-            header('location user/account.php');
+            header('location: ../user/account.php');
 
         }
     }

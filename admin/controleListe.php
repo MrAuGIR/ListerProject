@@ -11,6 +11,7 @@ if(!isset($_SESSION['auth']) || $_SESSION['auth']['level']!=ADMIN_LEVEL){
 }
 
 $user = $_SESSION['auth'];
+$user_name = $_SESSION['auth']['name'];
 
 /** Connexion a la base de donnée */
 /*require_once 'bdd.php';*/
