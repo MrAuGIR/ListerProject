@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,16 @@ class Product
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ListeLine::class, mappedBy="product", orphanRemoval=true)
+     */
+    private $listeLines;
+
+    public function __construct()
+    {
+        $this->listeLines = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,36 @@ class Product
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ListeLine[]
+     */
+    public function getListeLines(): Collection
+    {
+        return $this->listeLines;
+    }
+
+    public function addListeLine(ListeLine $listeLine): self
+    {
+        if (!$this->listeLines->contains($listeLine)) {
+            $this->listeLines[] = $listeLine;
+            $listeLine->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListeLine(ListeLine $listeLine): self
+    {
+        if ($this->listeLines->removeElement($listeLine)) {
+            // set the owning side to null (unless already changed)
+            if ($listeLine->getProduct() === $this) {
+                $listeLine->setProduct(null);
+            }
+        }
 
         return $this;
     }

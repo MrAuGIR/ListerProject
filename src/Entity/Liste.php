@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ListeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,16 @@ class Liste
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $color;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ListeLine::class, mappedBy="liste")
+     */
+    private $listeLines;
+
+    public function __construct()
+    {
+        $this->listeLines = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +132,36 @@ class Liste
     public function setColor(?string $color): self
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ListeLine[]
+     */
+    public function getListeLines(): Collection
+    {
+        return $this->listeLines;
+    }
+
+    public function addListeLine(ListeLine $listeLine): self
+    {
+        if (!$this->listeLines->contains($listeLine)) {
+            $this->listeLines[] = $listeLine;
+            $listeLine->setListe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListeLine(ListeLine $listeLine): self
+    {
+        if ($this->listeLines->removeElement($listeLine)) {
+            // set the owning side to null (unless already changed)
+            if ($listeLine->getListe() === $this) {
+                $listeLine->setListe(null);
+            }
+        }
 
         return $this;
     }
