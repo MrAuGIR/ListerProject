@@ -54,6 +54,16 @@ class Liste
      */
     private $listeLines;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $chrono;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="listes")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->listeLines = new ArrayCollection();
@@ -162,6 +172,30 @@ class Liste
                 $listeLine->setListe(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getChrono(): ?int
+    {
+        return $this->chrono;
+    }
+
+    public function setChrono(int $chrono): self
+    {
+        $this->chrono = $chrono;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
