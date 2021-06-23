@@ -29,6 +29,11 @@ class Product
      */
     private $listeLines;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     */
+    private $category;
+
     public function __construct()
     {
         $this->listeLines = new ArrayCollection();
@@ -77,6 +82,18 @@ class Product
                 $listeLine->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
