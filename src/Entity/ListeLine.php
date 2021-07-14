@@ -9,7 +9,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ListeLineRepository::class)
  */
-#[ApiResource()]
+#[ApiResource(
+    attributes: [
+        "pagination_enabled" => [false]
+    ]
+)]
 class ListeLine
 {
     /**

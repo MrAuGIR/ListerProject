@@ -11,7 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ListeRepository::class)
  */
-#[ApiResource()]
+#[ApiResource(
+    attributes:[
+        "pagination_enabled"=> [false]
+    ],
+)]
 class Liste
 {
     /**
