@@ -5,6 +5,9 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\User;
+use App\Entity\Liste;
+use DateTime;
+use DateTimeImmutable;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -54,6 +57,18 @@ class AppFixtures extends Fixture
                 ->setPassword($this->encoder->hashPassword($user,'Password01'))
                 ;
             $manager->persist($user);
+            $chrono = 1;
+            for($e=0;$e<mt_rand(1,3);$e++){
+                $liste = new Liste();
+                $liste->setChrono($chrono)
+                ->setCreatedAt(new DateTimeImmutable("now"))
+                ->setColor($faker->hexColor)
+                ->setTitle($faker->sentence(2))
+                ->setSlug($this->slugger->slug($liste->getTitle()))
+                ->setUser($user);
+                $chrono = $chrono + 1; 
+                $manager->persist($liste);
+            }
                 
 
         }
