@@ -7,11 +7,14 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
-#[ApiResource()]
+#[ApiResource(
+    normalizationContext:['groups' => ['product_read']],
+)]
 class Product
 {
     /**
@@ -19,21 +22,25 @@ class Product
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['product_read','subresource_liste_listeLine'])]
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
+    #[Groups(['product_read','subresource_liste_listeLine'])]
     private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=ListeLine::class, mappedBy="product", orphanRemoval=true)
      */
+    #[Groups(['product_read'])]
     private $listeLines;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      */
+    #[Groups(['product_read','subresource_liste_listeLine'])]
     private $category;
 
     public function __construct()

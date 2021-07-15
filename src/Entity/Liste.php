@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\ListeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,6 +15,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 #[ApiResource(
     normalizationContext:['groups' => ['liste_read']],
+    subresourceOperations:[
+        'listeLines_get_subresource' => [
+            'path' => '/listes/{id}/listeLines'
+        ]
+    ],
     attributes:[
         "pagination_enabled"=> [false]
     ],
@@ -68,6 +74,7 @@ class Liste
      * @ORM\OneToMany(targetEntity=ListeLine::class, mappedBy="liste")
      */
     #[Groups(['liste_read'])]
+    #[ApiSubresource()]
     private $listeLines;
 
     /**

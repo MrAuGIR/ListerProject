@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ListeLineRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ListeLineRepository::class)
@@ -12,6 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     attributes: [
         "pagination_enabled" => [false]
+    ],
+    subresourceOperations:[
+        'api_listes_liste_lines_get_subresource' => [
+            'method' => 'GET',
+            'normalization_context' => [
+                'groups' => ['subresource_liste_listeLine']
+            ]
+        ]
     ]
 )]
 class ListeLine
@@ -21,22 +30,26 @@ class ListeLine
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['subresource_liste_listeLine'])]
     private $id;
 
     /**
      * @ORM\Column(type="integer")
      */
+    #[Groups(['subresource_liste_listeLine'])]
     private $quantity;
 
     /**
      * @ORM\Column(type="boolean")
      */
+    #[Groups(['subresource_liste_listeLine'])]
     private $isFinished;
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="listeLines")
      * @ORM\JoinColumn(nullable=false)
      */
+    #[Groups(['subresource_liste_listeLine'])]
     private $product;
 
     /**
