@@ -7,11 +7,13 @@ use App\Repository\ListeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ListeRepository::class)
  */
 #[ApiResource(
+    normalizationContext:['groups' => ['liste_read']],
     attributes:[
         "pagination_enabled"=> [false]
     ],
@@ -23,51 +25,61 @@ class Liste
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    #[Groups(['liste_read'])]
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
+    #[Groups(['liste_read'])]
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    #[Groups(['liste_read'])]
     private $description;
 
     /**
      * @ORM\Column(type="datetime_immutable")
      */
+    #[Groups(['liste_read'])]
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
+    #[Groups(['liste_read'])]
     private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    #[Groups(['liste_read'])]
     private $slug;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
+    #[Groups(['liste_read'])]
     private $color;
 
     /**
      * @ORM\OneToMany(targetEntity=ListeLine::class, mappedBy="liste")
      */
+    #[Groups(['liste_read'])]
     private $listeLines;
 
     /**
      * @ORM\Column(type="integer")
      */
+    #[Groups(['liste_read'])]
     private $chrono;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="listes")
      */
+    #[Groups(['liste_read'])]
     private $user;
 
     public function __construct()
