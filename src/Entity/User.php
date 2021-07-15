@@ -6,12 +6,17 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
+#[UniqueEntity('email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
@@ -24,6 +29,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
+    #[Email(['message' => 'Format invalide'])]
+    #[NotBlank(['message' => 'Veuillez saisir un email'])]
+    #[Length([
+            'max' => '180',
+            'maxMessage' => 'Email trop long'
+        ]
+    )]
     private $email;
 
     /**
@@ -35,16 +47,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
+    #[NotBlank(['message' => 'Veuillez saisir un mot de passe'])]
     private $password;
 
     /**
      * @ORM\Column(type="string", length=155)
      */
+    #[NotBlank(['message' => 'Nom obligatoire'])]
+    #[Length([
+        'min' => '3',
+        'minMessage' => 'Nom trop court',
+        'max' => '155',
+        'maxMessage' => 'Nom trop long'
+    ])]
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=155, nullable=true)
      */
+    #[Length([
+        'max' => '155',
+        'maxMessage' => 'Prénom trop long'
+    ])]
     private $firstName;
 
     /**

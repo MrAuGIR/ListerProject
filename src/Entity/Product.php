@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -29,6 +31,13 @@ class Product
      * @ORM\Column(type="string", length=100)
      */
     #[Groups(['product_read','subresource_liste_listeLine'])]
+    #[NotBlank(['message' => 'Veuillez saisir un nom de produit'])]
+    #[Length([
+        'min' => '3',
+        'minMessage' => 'Nom trop court',
+        'max' => '100',
+        'maxMessage' => 'Nom trop long'
+    ])]
     private $name;
 
     /**

@@ -6,6 +6,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ListeLineRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints\GreaterThan;
+use Symfony\Component\Validator\Constraints\Type;
 
 /**
  * @ORM\Entity(repositoryClass=ListeLineRepository::class)
@@ -37,6 +39,13 @@ class ListeLine
      * @ORM\Column(type="integer")
      */
     #[Groups(['subresource_liste_listeLine'])]
+    #[Type([
+        'type' => 'integer',
+        'message' => 'La quantité doit être de type entier'
+    ])]
+    #[GreaterThan(
+        ['value' => 0,]
+    )]
     private $quantity;
 
     /**

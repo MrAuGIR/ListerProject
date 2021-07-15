@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints\Type;
 
 /**
  * @ORM\Entity(repositoryClass=ListeRepository::class)
@@ -50,12 +51,14 @@ class Liste
      * @ORM\Column(type="datetime_immutable")
      */
     #[Groups(['liste_read'])]
+    #[Type(['type' => "DateTimeInterface", "message" => "la date doit être au format yyy-mm-ddT00:00:00"])]
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     #[Groups(['liste_read'])]
+    #[Type(['type' => "DateTimeInterface", "message" => "la date doit être au format yyy-mm-ddT00:00:00"])]
     private $updatedAt;
 
     /**
