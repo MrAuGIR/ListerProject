@@ -11,4 +11,6 @@
 5. WebPack encore
 6. Bootstrap 5
 7. php 8.0.3
+8. JWT token
+9. openssl
    
