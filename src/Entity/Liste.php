@@ -15,15 +15,22 @@ use Symfony\Component\Validator\Constraints\Type;
  * @ORM\Entity(repositoryClass=ListeRepository::class)
  */
 #[ApiResource(
+    attributes: [
+        "pagination_enabled" => [false],
+        "security" => "is_granted('ROLE_USER')"
+    ],
     normalizationContext:['groups' => ['liste_read']],
     subresourceOperations:[
         'listeLines_get_subresource' => [
             'path' => '/listes/{id}/listeLines'
         ]
     ],
-    attributes:[
-        "pagination_enabled"=> [false]
-    ],
+    itemOperations:[
+        'get' => ["security" => "is_granted('LISTE_VIEW',object)"],
+        'put' => ["security" => "is_granted('LISTE_EDIT',object)"],
+        'delete' => ['security' => "is_granted('LISTE_DELETE',object)"]
+    ]
+    
 )]
 class Liste
 {
