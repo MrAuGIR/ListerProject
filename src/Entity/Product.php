@@ -16,6 +16,15 @@ use Symfony\Component\Validator\Constraints\NotBlank;
  */
 #[ApiResource(
     normalizationContext:['groups' => ['product_read']],
+    collectionOperations:[
+        "get",
+        "post" => ["security" => "is_granted('ROLE_ADMIN')"]
+    ],
+    itemOperations:[
+        "get",
+        "put" => ["security" => "is_granted('ROLE_ADMIN')"],
+        "delete" => ["security" => "is_granted('ROLE_ADMIN')"]
+    ]
 )]
 class Product
 {
