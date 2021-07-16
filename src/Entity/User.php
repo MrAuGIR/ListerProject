@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -16,6 +17,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
+#[ApiResource()]
 #[UniqueEntity('email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -34,8 +36,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Length([
             'max' => '180',
             'maxMessage' => 'Email trop long'
-        ]
-    )]
+        ])]
     private $email;
 
     /**

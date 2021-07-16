@@ -34,7 +34,7 @@ class Category
         'min' => '3',
         'minMessage' => 'Nom trop court',
         'max' => '255',
-        'maxMesage' => 'Nom trop long'
+        'maxMessage' => 'Nom trop long'
     ])]
     private $name;
 

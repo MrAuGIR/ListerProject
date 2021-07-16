@@ -23,7 +23,11 @@ use Symfony\Component\Validator\Constraints\Type;
                 'groups' => ['subresource_liste_listeLine']
             ]
         ]
+    ],
+    denormalizationContext:[ 
+        'disable_type_enforcement' => true
     ]
+
 )]
 class ListeLine
 {
@@ -43,9 +47,7 @@ class ListeLine
         'type' => 'integer',
         'message' => 'La quantité doit être de type entier'
     ])]
-    #[GreaterThan(
-        ['value' => 0,]
-    )]
+    #[GreaterThan(-1)]
     private $quantity;
 
     /**
