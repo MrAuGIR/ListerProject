@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Liste;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method Liste|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,27 @@ class ListeRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Liste::class);
+    }
+
+    public function findLastChrono(User $user){
+        return $this->createQueryBuilder('i')
+            ->select("i.chrono")
+            ->where("i.user = :user")
+            ->setParameter("user", $user)
+            ->orderBy('i.chrono',"DESC")
+            ->setMaxResults(1)
+            ->getQuery()->getSingleScalarResult();
+    }
+
+    public function findNextChrono(User $user)
+    {
+        return $this->createQueryBuilder('i')
+            ->select("i.chrono")
+            ->where("i.user = :user")
+            ->setParameter("user", $user)
+            ->orderBy('i.chrono', "DESC")
+            ->setMaxResults(1)
+            ->getQuery()->getSingleScalarResult() + 1;
     }
 
     // /**
