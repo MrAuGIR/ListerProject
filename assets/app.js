@@ -10,9 +10,12 @@ import './styles/app.css';
 //import de react
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from './js/components/NavBar';
 
 
 
 const App = () => {
-    
+    return <>
+    <Navbar />
+    </>
 }
