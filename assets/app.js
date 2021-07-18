@@ -12,10 +12,14 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from './js/components/NavBar';
 import HomePage from './js/pages/HomePage';
-import { HashRouter, Switch, Route, withRouter } from 'react-router-dom';
+import { HashRouter, Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import ListesPage from './js/pages/ListesPage';
 import LoginPage from './js/pages/LoginPage';
+import RegisterPage from './js/pages/RegisterPage';
 import LoginAPI from './js/services/LoginAPI';
+import loginContext from './js/contexts/loginContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -32,16 +36,19 @@ const App = () => {
     }
 
     return(
-        <HashRouter>
-            <NavBarWithRouter />
-            <main className="container pt-5">
-                <Switch>
-                    <Route path="/login" component={LoginPage} />
-                    <Route path="/listes" component={ListesPage} />
-                    <Route path="/" component={HomePage} />
-                </Switch>
-            </main>
-        </HashRouter>
+        <loginContext.Provider value={contextValue} >
+            <HashRouter>
+                <NavBarWithRouter />
+                <main className="container pt-5">
+                    <Switch>
+                        <Route path="/login" component={LoginPage} />
+                        <Route path="/register" component={RegisterPage} />
+                        <Route path="/listes" component={ListesPage} />
+                        <Route path="/" component={HomePage} />
+                    </Switch>
+                </main>
+            </HashRouter>
+        </loginContext.Provider>
     ); 
 }
 
