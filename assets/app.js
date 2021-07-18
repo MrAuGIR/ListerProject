@@ -6,6 +6,7 @@
  */
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 //import de react
 import React, {useState} from 'react';
@@ -19,9 +20,9 @@ import RegisterPage from './js/pages/RegisterPage';
 import LoginAPI from './js/services/LoginAPI';
 import loginContext from './js/contexts/loginContext';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
+LoginAPI.setup();
 
 const App = () => {
 
@@ -48,6 +49,7 @@ const App = () => {
                     </Switch>
                 </main>
             </HashRouter>
+            <ToastContainer position={toast.POSITION.BOTTOM_CENTER} />
         </loginContext.Provider>
     ); 
 }
