@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import LoginAPI from '../services/LoginAPI';
 import loginContext from '../contexts/loginContext';
+import logo from '../../img/icon/logoList_medium.png';
 
 const Navbar = ({history}) => {
 
@@ -16,7 +17,7 @@ const Navbar = ({history}) => {
     return ( 
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/" replace>Navbar</NavLink>
+                <NavLink className="navbar-brand" to="/" replace><img src={logo} /></NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
