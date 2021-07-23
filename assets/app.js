@@ -24,6 +24,7 @@ import RegisterPage from './js/pages/RegisterPage';
 import LoginAPI from './js/services/LoginAPI';
 import loginContext from './js/contexts/loginContext';
 import { ToastContainer, toast } from 'react-toastify';
+import PrivateRoute from './js/components/PrivateRoute';
 
 
 LoginAPI.setup();
