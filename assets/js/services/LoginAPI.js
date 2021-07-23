@@ -44,7 +44,7 @@ function setup(){
 
         //j'extirpe la donné exp de data renvoyé par jwtDecode(token)
         const {exp} = jwtDecode(token);
-        if( exp * 1000 > new Date().getItem() ){
+        if( exp * 1000 > new Date().getTime() ){
             setAxiosToken(token);
         }
     }
