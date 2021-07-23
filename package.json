@@ -24,10 +24,12 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "@popperjs/core": "^2.9.2",
         "axios": "^0.21.1",
         "dotenv": "^10.0.0",
         "jwt-decode": "^3.1.2",
         "react": "16.8.6",
+        "react-content-loader": "^6.0.3",
         "react-dom": "16.8.6",
         "react-router-dom": "^5.2.0",
         "react-toastify": "^7.0.4"

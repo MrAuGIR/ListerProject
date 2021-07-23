@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Axios from 'axios';
 import {LISTE_API} from '../config';
 import Cache from './Cache';
@@ -29,7 +30,7 @@ async function find(id){
             })
 }
 
-async function create(){
+function create(){
     return Axios.post(LISTE_API, liste)
             .then( async response => {
                 const cachedListes = await Cache.get('listes');
@@ -40,11 +41,14 @@ async function create(){
             })
 }
 
-
+function deleteListes(id){
+    return Axios.delete(LISTE_API + "/" + id);
+}
 
 
 export default{
     findAll:findAll,
     find:find,
-    create:create
+    create:create,
+    delete:deleteListes
 }

@@ -31,7 +31,7 @@ const ToolsBarListes = ({props}) => {
 
 
     return ( 
-        <>
+        
             <div className="tools-bar-liste">
                 <div className="row">
                     <div className="col-12">
@@ -75,7 +75,7 @@ const ToolsBarListes = ({props}) => {
                 
 
             </div>
-        </>
+        
      );
 }
  

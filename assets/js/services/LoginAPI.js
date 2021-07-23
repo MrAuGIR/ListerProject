@@ -6,7 +6,7 @@ import { LOGIN_API } from "../config";
  * LOGOUT (Delete token)
  */
 function logout(){
-    window.localStorage.removeItem("loginToken");
+    window.localStorage.removeItem("authToken");
     delete Axios.defaults.headers['Authorization'];
 }
 
@@ -15,21 +15,23 @@ function logout(){
  * @param {object} credentials
  * @return
  */
-function login(credentials){
+async function login(credentials){
 
-    return Axios.post(LOGIN_API, credentials)
+    return await Axios.post(LOGIN_API, credentials)
         .then(response => response.data.token)
         .then(token => {
-            window.localStorage.setItem("loginToken", token);
+            window.localStorage.setItem("authToken", token);
             setAxiosToken(token);
         })
 }
 
 /**
  * Set jwt token bearer on Axios default header
+ * @param {string} token JWT Token
  */
 function setAxiosToken(token){
-    Axios.defaults.headers['Authorization'] = "Bearer "+token;
+    Axios.defaults.headers['Authorization']= "Bearer "+ token ;
+
 }
 
 /**
@@ -38,7 +40,8 @@ function setAxiosToken(token){
 function setup(){
 
     //check if token exist
-    const token = window.localStorage.getItem('loginToken');
+    const token = window.localStorage.getItem('authToken');
+    
 
     if(token){
 
@@ -46,6 +49,7 @@ function setup(){
         const {exp} = jwtDecode(token);
         if( exp * 1000 > new Date().getTime() ){
             setAxiosToken(token);
+            console.log(token);
         }
     }
 }
@@ -55,7 +59,7 @@ function setup(){
  */
 function isLogin(){
 
-    const token = window.localStorage.getItem('loginToken');
+    const token = window.localStorage.getItem('authToken');
 
     if(token){
         const {exp} = jwtDecode(token);
